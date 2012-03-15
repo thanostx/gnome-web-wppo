@@ -280,8 +280,8 @@ add_action('admin_menu', function() {
                     echo '<p>There were some problems on compiling the following MO file:</p>';
                     
                     echo '<ul>';
-                    foreach ($value as $coverage => $output) {
-                        echo '<li>'.$coverage.'.pot<br /><pre><code style="display: block;">'.htmlspecialchars($output).'</code></pre></li>';
+                    foreach ($value as $lang => $output) {
+                        echo '<li>'.$lang.'<br /><pre><code style="display: block;">'.htmlspecialchars($output).'</code></pre></li>';
                     }
                     echo '</ul>';
                 }

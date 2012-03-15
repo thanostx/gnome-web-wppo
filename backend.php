@@ -218,14 +218,16 @@ function wppo_check_for_po_changes($force = false, $coverage = array('dynamic', 
             $translated_xml_file = WPPO_DIR.$post_type.'/xml/'.$lang.'.xml';
             $mo_file             = WPPO_DIR.$post_type.'/mo/'.$lang.'.mo';
             
-            $compile_command = WPPO_MSGFMT_COMMAND." ".escapeshellarg($po_file)." -o ".escapeshellarg($mo_file)." -i ".escapeshellarg($its_rules_file)." 2>&1";
+            $compile_command = WPPO_MSGFMT_COMMAND." ".escapeshellarg($po_file)." -o ".escapeshellarg($mo_file)." 2>&1";
             $msgfmt_output = shell_exec($compile_command);
 
             if (trim($msgfmt_output) != '') {
             
-                $wppo_error['msgfmt'][$post_type][$lang] = $msgfmt_output;
+                $wppo_error['msgfmt'][$lang] = $msgfmt_output;
                 
             } else {
+            
+                $its_rules_file = WPPO_PLUGIN_DIR.'wppo.its';
             
                 $command = WPPO_ITSTOOL_COMMAND." -m ".escapeshellarg($mo_file)." -o ".escapeshellarg($translated_xml_file)." ".escapeshellarg($original_xml_file)." -i ".escapeshellarg($its_rules_file)." 2>&1";
                 $output = shell_exec($command);
