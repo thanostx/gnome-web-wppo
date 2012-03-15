@@ -322,6 +322,16 @@ function wppo_check_for_po_changes($force = false, $coverage = array('dynamic', 
                                         
                                         // Find all the links and convert to current language
                                         $node[$column] = wppo_recreate_links_in_html($node[$column], $lang);
+                                        
+                                        /*
+                                         * Due to bug #47380 in ITS Tool we have to manually replace
+                                         * all the self-contained tags to make sure browsers will render
+                                         * the HTML just fine.
+                                         *
+                                         * https://bugs.freedesktop.org/show_bug.cgi?id=47380
+                                         */
+                                         
+                                         $node[$column] = preg_replace("/<([a-z]+)([^>]*)\/>/i", "<$1$2></$1>", $node[$column]);
                                     }
                                     
                                 break;
