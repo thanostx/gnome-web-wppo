@@ -79,7 +79,14 @@ add_action('admin_menu', function() {
     }
     
     if(isset($_GET['checkforlangupdates']) && $_GET['checkforlangupdates']) {
-        $number_of_changed_po_files = wppo_check_for_po_changes();
+        
+        if(isset($_GET['force']) && $_GET['force'] == '1') {
+            $force = true;
+        } else {
+            $force = false;
+        }
+        
+        $number_of_changed_po_files = wppo_check_for_po_changes($force);
         
         if ($number_of_changed_po_files == 0) {
             $wppo_update_message = 'No new translations found.';
