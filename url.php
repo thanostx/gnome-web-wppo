@@ -1,16 +1,5 @@
 <?php
 
-add_action('parse_request', function($request) {
-    
-    $lang_value = wppo_find_lang_in_uri();
-    
-    if (isset($lang_value)) {
-        $request->query_vars['lang'] = $lang_value;
-    }
-    
-});
-
-
 add_action('set_lang_request', 'wppo_remove_lang_from_request_uri');
 
 do_action('set_lang_request');
