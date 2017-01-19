@@ -595,34 +595,14 @@ function wppo_get_all_available_langs() {
 }
 
 /*
- * Since we just can't redefine constants without special php libraries, we need to
- * ask to the admin manually remove it from wp-config.php.
+ * Throw an error message if folder is not writable.
  */
-
-if (is_admin() && defined('WPLANG')) {
-    add_action('admin_notices', function() {
-        echo "<div class=\"updated fade\"><p>Please comment line <code>define('WPLANG', '');</code> in wp-config.php to make WPPO Plugin work correctly.</p></div>";
-    }); 
-}
 
 if (is_admin() && (!is_dir(ABSPATH."wp-content/languages") || !is_writable(ABSPATH."wp-content/languages"))) {
     add_action('admin_notices', function() {
         echo "<div class=\"updated fade\"><p>Please make <code>/wp-content/languages</code> folder writable.</p></div>";
     }); 
 }
-
-
-add_action('setup_theme', function() {
-    /*
-     * Define default language for WordPress template
-     */
-    if (wppo_get_lang() != WPPO_DEFAULT_LANGUAGE_CODE) {
-        if(!defined('WPLANG')) {
-            define('WPLANG', wppo_get_lang());
-        }
-    }
-    
-});
 
 
 /*

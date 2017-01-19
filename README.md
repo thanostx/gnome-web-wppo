@@ -36,7 +36,6 @@ Install
 - Extract WPPO files in `wp-content/plugins/wppo` as usual.
 - Give WordPress `ABSPATH` folder writing permissions
 - Give writing permissions to `wp-content/languages`.
-- Comment the line `define('WPLANG', '');` in wp-config.php
 - Activate the plugin
 
 Adding new languages
@@ -48,6 +47,6 @@ Adding new languages
 - Make sure to provide translations for the theme and WordPress instance
 - Press the _Check for language updates_ button and voilà.
 
-_Language format should follow the same pattern from GetText:_  
- - `ll`: ISO 639 two-letter language code (lowercase)  
+_Language format should follow the same pattern from GetText:_
+ - `ll`: ISO 639 two-letter language code (lowercase)
  - `CC`: ISO 3166 two-letter country code (uppercase)
