@@ -2,18 +2,18 @@
     xmlns:its="http://www.w3.org/2005/11/its"
     xmlns:itst="http://itstool.org/extensions/"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    its:version="1.0">
+    version="1.0">
     
     <its:translateRule translate="no" selector="//script"/>
     <its:translateRule translate="no" selector="//style"/>
     
     <itst:preserveSpaceRule preserveSpace="yes" selector="//pre"/>
     
-    <its:translateRule translate="yes" selector="//img[@alt != '']/@alt"/>
+    <!--<its:translateRule translate="yes" selector="//img[@alt != '']/@alt"/>-->
     <its:translateRule translate="yes" selector="//input[@placeholder != '']/@placeholder"/>
     <its:translateRule translate="yes" selector="//textarea[@placeholder != '']/@textarea"/>
     <its:translateRule translate="yes" selector="//table[@summary != '']/@summary"/>
-    <its:translateRule translate="yes" selector="//*[@title != '']/@title"/>
+    <!--<its:translateRule translate="yes" selector="//*[@title != '']/@title"/>-->
     
     <!--<its:withinTextRule withinText="yes" selector="//a"/>-->
     <its:withinTextRule withinText="yes" selector="//abbr"/>
